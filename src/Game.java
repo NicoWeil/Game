@@ -39,6 +39,7 @@ public class Game {
 			System.out.println("---------------------------------");
             System.out.println("Runde " + round);
             round++;
+            System.out.println(opponent.getHitChance());
             System.out.println(player.toString());
             System.out.println(opponent.toString());
             System.out.println("Welche Aktion soll ausgeführt werden?");
@@ -78,17 +79,21 @@ public class Game {
                     		break;
                     	} else {
                     		if(eingabe.equals("4")) {
+                    			System.out.println("Spieler setzt eine Powerpille ein!");
                     			player.decreaseAp(20);
                     			player.takePowerPill();
                     			break;
                     		} else {
                     			if(eingabe.equals("5")) {
+                    				System.out.println("Spieler friert das Monster ein!");
                     				player.decreaseAp(25);
                     				opponent.freeze();
                     				break;
                     			} else {
                     				if(eingabe.equals("6")) {
-                    					
+                    					System.out.println("Spieler erzeugt Nebel!");
+                    					opponent.hasDecreasedHitChance(0.2);
+                    					break;
                     				}
                     			}
                     		}

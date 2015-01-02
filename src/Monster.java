@@ -7,6 +7,7 @@ public class Monster {
 	private double hitChance;
 	private boolean frozen;
 	private int specialAbilityDuration;
+	private boolean decreasedHitChance;
 
 	
 	public Monster(int maxH, int a, double y) {
@@ -17,6 +18,7 @@ public class Monster {
 		this.hitChance = y;
 		this.frozen = false;
 		this.specialAbilityDuration = 0;
+		this.decreasedHitChance = false;
 
 	}
 	
@@ -28,7 +30,7 @@ public class Monster {
 		this.hitChance = 0.9;
 		this.frozen = false;
 		this.specialAbilityDuration = 0;
-
+		this.decreasedHitChance = false;
 	
 	}
 	
@@ -105,7 +107,18 @@ public class Monster {
 		if(this.specialAbilityDuration <= 0) {
 			this.specialAbilityDuration = 0;
 			this.frozen = false;
+			this.decreasedHitChance = false;
 		}
+	}
+	
+	public boolean hasDecreasedHitChance(double x) {
+		this.specialAbilityDuration = 3;
+		this.hitChance = this.hitChance - x;
+		return this.decreasedHitChance = true;
+	}
+	
+	public double getHitChance() {
+		return this.hitChance;
 	}
 	
 	
