@@ -161,6 +161,10 @@ public class Player {
 		this.ap = this.ap - apCosts;
 	}
 	
+	public void roundFinished() {
+		
+	}
+	
 	/**
 	 * Methode getHP() gibt HP zurueck.
 	 */

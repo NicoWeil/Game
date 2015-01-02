@@ -96,6 +96,10 @@ public class Monster {
 			return this.frozen;
 	}
 	
+	/**
+	 * Methode roundFinishes() senkt die specialAbilityDuration (falls >0) um 1 und setzt this.frozen auf 0, sobald specialAbilityDuration=0.
+	 */
+	
 	public void roundFinished() {
 		this.specialAbilityDuration --;
 		if(this.specialAbilityDuration <= 0) {
