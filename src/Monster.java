@@ -5,7 +5,7 @@ public class Monster {
 	private int maxHP;
 	private int atk;
 	private double hitChance;
-	private boolean isFrozen;
+	private boolean frozen;
 	private int specialAbilityDuration;
 
 	
@@ -15,7 +15,7 @@ public class Monster {
 		this.maxHP = maxH;
 		this.atk = a;
 		this.hitChance = y;
-		this.isFrozen = false;
+		this.frozen = false;
 		this.specialAbilityDuration = 0;
 
 	}
@@ -26,7 +26,7 @@ public class Monster {
 		this.maxHP = 200;
 		this.atk = 10;
 		this.hitChance = 0.9;
-		this.isFrozen = false;
+		this.frozen = false;
 		this.specialAbilityDuration = 0;
 
 	
@@ -85,20 +85,22 @@ public class Monster {
 	
 	public void freeze() {
 		this.specialAbilityDuration = 3;
-		this.isFrozen = true;
+		this.frozen = true;
 	}
 	
 	/**
-	 * Methode isFrozen() gibt einen booleanschen Wert zurueck, ob das Monster "eingefroren" ist oder nicht.
+	 * Methode isFrozen() gibt einen booleanschen Wert zurueck, ob das Monster "eingefroren" ist oder nicht und verringert die noch verbleibende Rundenzeit um eins.
 	 */
 	
-	public boolean meltAndCheckIfFrozen() {
+	public boolean isFrozen() {
+			return this.frozen;
+	}
+	
+	public void roundFinished() {
 		this.specialAbilityDuration --;
-		if(this.specialAbilityDuration > 0) {
-			return this.isFrozen;
-		} else {
-				this.isFrozen = false;
-				return this.isFrozen;
+		if(this.specialAbilityDuration <= 0) {
+			this.specialAbilityDuration = 0;
+			this.frozen = false;
 		}
 	}
 	

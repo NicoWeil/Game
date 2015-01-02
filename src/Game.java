@@ -98,7 +98,7 @@ public class Game {
 
                 System.out.println("---------------------------------");
                 
-                if(opponent.meltAndCheckIfFrozen()) {
+                if(opponent.isFrozen()) {
                 	System.out.println("Das Monster ist gefroren und kann deshalb nicht angreifen.");
                 	System.out.println(player.toString());
                 	System.out.println(opponent.toString());
@@ -118,6 +118,8 @@ public class Game {
             
             int refilledAp = player.regenerateAp();
             System.out.println("Es wurden " + refilledAp + " AP regeneriert!");
+            
+            opponent.roundFinished();
             
             }
 		if(player.isDefeated()) {
