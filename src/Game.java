@@ -37,8 +37,9 @@ public class Game {
             System.out.println("1 Angriff");
             System.out.println("2 Item (" + player.getRemainingItemUses() + ")");
             System.out.println("3 Flucht");
-            System.out.println("4 Powerpille (20 AP)");
-            System.out.println("5 Eisstrahl (25 AP)");
+            System.out.println("4 Powerpille (25 AP)");
+            System.out.println("5 Eisstrahl (30 AP)");
+            System.out.println("6 Nebel (20 AP)");
             
             while (true) { // Schleife immer laufend
                 String eingabe = sc.nextLine();
@@ -77,6 +78,10 @@ public class Game {
                     				player.decreaseAp(25);
                     				opponent.freeze();
                     				break;
+                    			} else {
+                    				if(eingabe.equals("6")) {
+                    					
+                    				}
                     			}
                     		}
                     	}
