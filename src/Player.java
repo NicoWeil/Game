@@ -11,7 +11,7 @@ public class Player {
 	private int maxAp;
 	private int apRegen;
 	private int bonusAtk;
-	private int duration;
+	private int specialAbilityDuration;
 	
 	public Player( int maxH, int a, int x, int r, double y) {
 		
@@ -36,7 +36,7 @@ public class Player {
 		this.ap = y;
 		this.apRegen = z;
 		this.bonusAtk= 0;
-		this.duration = 0;
+		this.specialAbilityDuration = 0;
 	}
 	
 	public Player() {
@@ -82,23 +82,18 @@ public class Player {
 	public int attackMonster(Monster monster) {
 		double zufallsZahlVergleich = Math.random();
 		if(zufallsZahlVergleich > this.hitChance) {
-			this.duration --; 
+			this.specialAbilityDuration --; 
 			return -1;
 		} else {
-			if(this.duration > 0) {
 				double zufallsZahl = Math.random() + 1;
 				monster.takeDamage((int) ((this.atk + this.bonusAtk) * zufallsZahl));
-				this.duration --; 
-				if(this.duration < 0) {
-					this.duration = 0;
+				this.specialAbilityDuration --; 
+				if(this.specialAbilityDuration <= 0) {
+					this.specialAbilityDuration = 0;
+					this.bonusAtk = 0;
 				}
 				return monster.getHp();
-			} else {
-				double zufallsZahl = Math.random() + 1;
-				monster.takeDamage((int) (this.atk * zufallsZahl));
-				return monster.getHp();
 			}
-		}
 	}
 	
 	/**
@@ -153,7 +148,7 @@ public class Player {
 	 */
 	
 	public void takePowerPill() {
-		this.duration = 3;
+		this.specialAbilityDuration = 2;
 		this.ap = this.ap - 15;
 		double multiplier = (Math.random());
 		this.bonusAtk = (int) (this.ap * multiplier);
@@ -173,7 +168,8 @@ public class Player {
 	
 	public int getHp() {
 		return this.hp;
-	
 	}
+	
+	
 
 }
