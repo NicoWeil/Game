@@ -11,7 +11,7 @@ public class Player {
 	private int maxAp;
 	private int apRegen;
 	private int bonusAtk;
-	private int duartion;
+	private int duration;
 	
 	public Player( int maxH, int a, int x, int r, double y) {
 		
@@ -36,6 +36,7 @@ public class Player {
 		this.ap = y;
 		this.apRegen = z;
 		this.bonusAtk= 0;
+		this.duration = 0;
 	}
 	
 	public Player() {
@@ -75,16 +76,28 @@ public class Player {
 	
 	/**
 	 * Methode attackMonster(Monster monster) fuegt dem uebergebenen Monsterobjekt Schaden zu.
+	 * Methode hat zwei Angriffsarten: Wenn Option "Powerpille" gewaehlt wird, wird der Angriff mit durch takePowerPill() generierte BonusATK zusaetzlich zu den ATK durchgefuehrt. Wenn nicht, wird der Angriff mit den normalen ATK durchgefuehrt. 
 	 */
 	
 	public int attackMonster(Monster monster) {
 		double zufallsZahlVergleich = Math.random();
 		if(zufallsZahlVergleich > this.hitChance) {
+			this.duration --; 
 			return -1;
 		} else {
-			double zufallsZahl = Math.random() + 1;
-			monster.takeDamage((int) ((this.atk + this.bonusAtk) * zufallsZahl));
-			return monster.getHp();
+			if(this.duration > 0) {
+				double zufallsZahl = Math.random() + 1;
+				monster.takeDamage((int) ((this.atk + this.bonusAtk) * zufallsZahl));
+				this.duration --; 
+				if(this.duration < 0) {
+					this.duration = 0;
+				}
+				return monster.getHp();
+			} else {
+				double zufallsZahl = Math.random() + 1;
+				monster.takeDamage((int) (this.atk * zufallsZahl));
+				return monster.getHp();
+			}
 		}
 	}
 	
@@ -140,6 +153,7 @@ public class Player {
 	 */
 	
 	public void takePowerPill() {
+		this.duration = 3;
 		this.ap = this.ap - 15;
 		double multiplier = (Math.random());
 		this.bonusAtk = (int) (this.ap * multiplier);

@@ -70,6 +70,7 @@ public class Game {
                     		break;
                     	} else {
                     		if(eingabe.equals("4")) {
+                    			player.takePowerPill();
                     			break;
                     		}
                     	}
