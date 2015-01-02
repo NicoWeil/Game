@@ -91,7 +91,7 @@ public class Game {
                     				break;
                     			} else {
                     				if(eingabe.equals("6")) {
-                    					System.out.println("Spieler erzeugt Nebel!");
+                    					System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
                     					opponent.hasDecreasedHitChance(0.2);
                     					break;
                     				}

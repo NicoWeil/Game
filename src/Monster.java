@@ -8,6 +8,7 @@ public class Monster {
 	private boolean frozen;
 	private int specialAbilityDuration;
 	private boolean decreasedHitChance;
+	private double decreasedHitPoints;
 
 	
 	public Monster(int maxH, int a, double y) {
@@ -19,6 +20,7 @@ public class Monster {
 		this.frozen = false;
 		this.specialAbilityDuration = 0;
 		this.decreasedHitChance = false;
+		this.decreasedHitPoints = 0.0;
 
 	}
 	
@@ -31,6 +33,8 @@ public class Monster {
 		this.frozen = false;
 		this.specialAbilityDuration = 0;
 		this.decreasedHitChance = false;
+		this.decreasedHitPoints = 0.0;
+
 	
 	}
 	
@@ -64,7 +68,7 @@ public class Monster {
 	
 	public int attack(Player player) {
 		double zufallsZahlVergleich = Math.random();
-		if(zufallsZahlVergleich > this.hitChance) {
+		if(zufallsZahlVergleich > (this.hitChance - this.decreasedHitPoints)) {
 			return -1;
 		} else {
 			double zufallsZahl = Math.random() + 1;
@@ -108,12 +112,13 @@ public class Monster {
 			this.specialAbilityDuration = 0;
 			this.frozen = false;
 			this.decreasedHitChance = false;
+			this.decreasedHitPoints = 0;
 		}
 	}
 	
 	public boolean hasDecreasedHitChance(double x) {
 		this.specialAbilityDuration = 3;
-		this.hitChance = this.hitChance - x;
+		this.decreasedHitPoints = 0.3;
 		return this.decreasedHitChance = true;
 	}
 	
