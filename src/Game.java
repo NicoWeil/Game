@@ -35,7 +35,6 @@ public class Game {
             round++;
             System.out.println(player.toString());
             System.out.println(opponent.toString());
-            System.out.println("Duration: " + duration);
             System.out.println("Welche Aktion soll ausgeführt werden?");
             System.out.println("1 Angriff");
             System.out.println("2 Item (" + player.getRemainingItemUses() + ")");
@@ -71,8 +70,6 @@ public class Game {
                     		break;
                     	} else {
                     		if(eingabe.equals("4")) {
-                    			duration = 3;
-                    			player.takePowerPill();
                     			break;
                     		}
                     	}
@@ -81,12 +78,6 @@ public class Game {
                     System.out.println("Neue Eingabe?");
                     }
                 
-            }
-            if(duration > 0) {
-            	duration --;
-            	if(duration == 0) {
-            		player.powerPillVanishes();
-            	}
             }
             
             if(!opponent.isDefeated()) {
