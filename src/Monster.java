@@ -6,6 +6,8 @@ public class Monster {
 	private int atk;
 	private double hitChance;
 	private boolean isFrozen;
+	private int specialAbilityDuration;
+
 	
 	public Monster(int maxH, int a, double y) {
 		
@@ -14,6 +16,8 @@ public class Monster {
 		this.atk = a;
 		this.hitChance = y;
 		this.isFrozen = false;
+		this.specialAbilityDuration = 0;
+
 	}
 	
 	public Monster() {
@@ -23,6 +27,8 @@ public class Monster {
 		this.atk = 10;
 		this.hitChance = 0.9;
 		this.isFrozen = false;
+		this.specialAbilityDuration = 0;
+
 	
 	}
 	
@@ -40,7 +46,7 @@ public class Monster {
 	}
 	
 	/**
-	 * Methode takeDamage fügt dem Monster den durch damage übergebenen Schaden zu
+	 * Methode takeDamage fügt dem Monster den durch damage übergebenen Schaden zu.
 	 */
 	
 	public void takeDamage(int damage) {
@@ -51,7 +57,7 @@ public class Monster {
 	}
 	
 	/**
-	 * Methode attack(Player player) fügt dem uebergebenen Objekt Schaden zu
+	 * Methode attack(Player player) fügt dem uebergebenen Objekt Schaden zu.
 	 */
 	
 	public int attack(Player player) {
@@ -66,23 +72,39 @@ public class Monster {
 	}
 	
 	/**
-	 * Methode toString() gibt HP, ATK, Items zurueck 
+	 * Methode toString() gibt HP, ATK, Items zurueck.
 	 */
 	
 	public String toString() {
 		return "Monster -- HP " + this.hp + " -- ATK " + this.atk;
 	}
 	
+	/**
+	 * Methode freeze() "friert" das Monster ein, sein Angriff auf den Spieler wird also uebersprungen.
+	 */
+	
 	public void freeze() {
+		this.specialAbilityDuration = 3;
 		this.isFrozen = true;
 	}
 	
-	public boolean isFrozen() {
-		return this.isFrozen;
+	/**
+	 * Methode isFrozen() gibt einen booleanschen Wert zurueck, ob das Monster "eingefroren" ist oder nicht.
+	 */
+	
+	public boolean meltAndCheckIfFrozen() {
+		this.specialAbilityDuration --;
+		if(this.specialAbilityDuration > 0) {
+			return this.isFrozen;
+		} else {
+				this.isFrozen = false;
+				return this.isFrozen;
+		}
 	}
 	
+	
 	/**
-	 * Methode getHP() gibt Lebenspunkte zurueck
+	 * Methode getHP() gibt Lebenspunkte zurueck.
 	 */
 	
 	public int getHp() {

@@ -93,8 +93,8 @@ public class Game {
 
                 System.out.println("---------------------------------");
                 
-                if(opponent.isFrozen()) {
-                	System.out.println("Das Monster ist gefrohren und kann deshalb nicht angreifen.");
+                if(opponent.meltAndCheckIfFrozen()) {
+                	System.out.println("Das Monster ist gefroren und kann deshalb nicht angreifen.");
                 	System.out.println(player.toString());
                 	System.out.println(opponent.toString());
                 } else {
