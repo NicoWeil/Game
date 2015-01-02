@@ -80,13 +80,13 @@ public class Game {
                     System.out.println("Keine gültige Eingabe!");
                     System.out.println("Neue Eingabe?");
                     }
-                if(duration > 0) {
-                	duration --;
-                	if(duration == 0) {
-                		player.powerPillVanishes();
-                	}
-                }
                 
+            }
+            if(duration > 0) {
+            	duration --;
+            	if(duration == 0) {
+            		player.powerPillVanishes();
+            	}
             }
             
             if(!opponent.isDefeated()) {
