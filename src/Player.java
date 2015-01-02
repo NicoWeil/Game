@@ -149,17 +149,16 @@ public class Player {
 	
 	public void takePowerPill() {
 		this.specialAbilityDuration = 2;
-		this.ap = this.ap - 15;
 		double multiplier = (Math.random());
 		this.bonusAtk = (int) (this.ap * multiplier);
 	}
 	
 	/**
-	 * Methode powerPillVanishes() setzt die Bonus-ATK wieder auf 0, also die Gegenmethode zu takePowerPill.
+	 * Methode decreaseAp(int apCosts) verringert die AP des Spielers um den in Klammern angegebenen Wert.
 	 */
 	
-	public void powerPillVanishes() {
-		this.bonusAtk = 0;
+	public void decreaseAp(int apCosts) {
+		this.ap = this.ap - apCosts;
 	}
 	
 	/**

@@ -5,6 +5,7 @@ public class Monster {
 	private int maxHP;
 	private int atk;
 	private double hitChance;
+	private boolean isFrozen;
 	
 	public Monster(int maxH, int a, double y) {
 		
@@ -12,6 +13,7 @@ public class Monster {
 		this.maxHP = maxH;
 		this.atk = a;
 		this.hitChance = y;
+		this.isFrozen = false;
 	}
 	
 	public Monster() {
@@ -20,6 +22,8 @@ public class Monster {
 		this.maxHP = 200;
 		this.atk = 10;
 		this.hitChance = 0.9;
+		this.isFrozen = false;
+	
 	}
 	
 	/**
@@ -69,6 +73,13 @@ public class Monster {
 		return "Monster -- HP " + this.hp + " -- ATK " + this.atk;
 	}
 	
+	public void freeze() {
+		this.isFrozen = true;
+	}
+	
+	public boolean isFrozen() {
+		return this.isFrozen;
+	}
 	
 	/**
 	 * Methode getHP() gibt Lebenspunkte zurueck

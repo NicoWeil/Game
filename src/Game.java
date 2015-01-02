@@ -37,7 +37,8 @@ public class Game {
             System.out.println("1 Angriff");
             System.out.println("2 Item (" + player.getRemainingItemUses() + ")");
             System.out.println("3 Flucht");
-            System.out.println("4 Powerpille (15 AP)");
+            System.out.println("4 Powerpille (20 AP)");
+            System.out.println("5 Eisstrahl (25 AP)");
             
             while (true) { // Schleife immer laufend
                 String eingabe = sc.nextLine();
@@ -68,8 +69,15 @@ public class Game {
                     		break;
                     	} else {
                     		if(eingabe.equals("4")) {
+                    			player.decreaseAp(20);
                     			player.takePowerPill();
                     			break;
+                    		} else {
+                    			if(eingabe.equals("5")) {
+                    				player.decreaseAp(25);
+                    				opponent.freeze();
+                    				break;
+                    			}
                     		}
                     	}
                     }
@@ -80,17 +88,24 @@ public class Game {
             }
             
             if(!opponent.isDefeated()) {
-            	System.out.println("Drücke eine Enter!");
+            	System.out.println("Drücke Enter!");
                 sc.nextLine();
 
                 System.out.println("---------------------------------");
-                System.out.println("Das Monster greift Spieler an!");
-                int playerHp = opponent.attack(player);
-                if(playerHp == -1) {
-                	System.out.println("Die Attacke ging daneben!");
-                } else {
+                
+                if(opponent.isFrozen()) {
+                	System.out.println("Das Monster ist gefrohren und kann deshalb nicht angreifen.");
                 	System.out.println(player.toString());
                 	System.out.println(opponent.toString());
+                } else {
+                System.out.println("Das Monster greift Spieler an!");
+                	int playerHp = opponent.attack(player);
+                	if(playerHp == -1) {
+                		System.out.println("Die Attacke ging daneben!");
+                	} else {
+                		System.out.println(player.toString());
+                		System.out.println(opponent.toString());
+                	}
                 }
             }
             
