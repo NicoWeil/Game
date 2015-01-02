@@ -24,8 +24,6 @@ public class Game {
 		
 		int round = 1;
 		
-		int duration = 0;
-		
 		Scanner sc = new Scanner(System.in);
 		
 		while(!player.isDefeated() && !opponent.isDefeated()) {
