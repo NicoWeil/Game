@@ -11,6 +11,7 @@ public class Player {
 	private int maxAp;
 	private int apRegen;
 	private int bonusAtk;
+	private int duartion;
 	
 	public Player( int maxH, int a, int x, int r, double y) {
 		
@@ -73,7 +74,7 @@ public class Player {
 	}
 	
 	/**
-	 * Methode attackMonster(Monster monster) fügt dem übergebenen Monsterobjekt Schaden zu.
+	 * Methode attackMonster(Monster monster) fuegt dem uebergebenen Monsterobjekt Schaden zu.
 	 */
 	
 	public int attackMonster(Monster monster) {
