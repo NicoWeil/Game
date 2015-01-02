@@ -24,7 +24,7 @@ public class Player {
 		
 	}
 	
-	public Player(int maxH, int a, int w, int r, double x, int y, int z) {
+	public Player(int maxH, int a, int w, int r, double x, int maxY, int y, int z) {
 		
 		this.hp = maxH;
 		this.maxHP = maxH;
@@ -32,7 +32,7 @@ public class Player {
 		this.healingPower = w;
 		this.remainingItemUses = r;
 		this.hitChance = x;
-		this.maxAp = y;
+		this.maxAp = maxY;
 		this.ap = y;
 		this.apRegen = z;
 		this.bonusAtk= 0;
@@ -82,16 +82,10 @@ public class Player {
 	public int attackMonster(Monster monster) {
 		double zufallsZahlVergleich = Math.random();
 		if(zufallsZahlVergleich > this.hitChance) {
-			this.specialAbilityDuration --; 
 			return -1;
 		} else {
 				double zufallsZahl = Math.random() + 1;
 				monster.takeDamage((int) ((this.atk + this.bonusAtk) * zufallsZahl));
-				this.specialAbilityDuration --; 
-				if(this.specialAbilityDuration <= 0) {
-					this.specialAbilityDuration = 0;
-					this.bonusAtk = 0;
-				}
 				return monster.getHp();
 			}
 	}
@@ -161,7 +155,16 @@ public class Player {
 		this.ap = this.ap - apCosts;
 	}
 	
+	/**
+	 * Methode roundFinished() verringert specialAbilityDuration um 1. Sie verhindert specialAbilityDuration<0 und setzt bonusATK=0, sobald specialAbilityDuration=0.
+	 */
+	
 	public void roundFinished() {
+		this.specialAbilityDuration --;
+		if(this.specialAbilityDuration <= 0) {
+			this.specialAbilityDuration = 0;
+			this.bonusAtk = 0;
+		}
 		
 	}
 	

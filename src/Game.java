@@ -7,6 +7,10 @@ public class Game {
 		
 		Monster[] monster = new Monster[5];
 		
+		/*
+		 * Constructor: Monster(maxHP, ATK, HitChance)
+		 */
+		
 		monster[0] = new Monster();
 		monster[1] = new Monster(100, 18, 0.8);
 		monster[2] = new Monster(150, 20, 0.5);
@@ -20,7 +24,11 @@ public class Game {
 		System.out.println("Ein wildes Monster " + monsterIndex + " erscheint!");
 		System.out.println(opponent.toString());
 		
-		Player player = new Player(100, 15, 40, 3, 0.7, 40, 10);
+		/*
+		 * Contsruktor: Player(maxHP, ATK, HealingPower, ItmeUses, HitChance, maxAP, startAP, APregenerate)
+		 */
+		
+		Player player = new Player(100, 15, 40, 3, 0.7, 40, 20, 5);
 		
 		int round = 1;
 		
@@ -120,6 +128,7 @@ public class Game {
             System.out.println("Es wurden " + refilledAp + " AP regeneriert!");
             
             opponent.roundFinished();
+            player.roundFinished();
             
             }
 		if(player.isDefeated()) {
