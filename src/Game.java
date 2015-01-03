@@ -28,7 +28,7 @@ public class Game {
 		 * Contsruktor: Player(maxHP, ATK, HealingPower, ItmeUses, HitChance, maxAP, startAP, APregenerate)
 		 */
 		
-		Player player = new Player(100, 15, 40, 3, 0.7, 40, 15, 5);
+		Player player = new Player(100, 15, 40, 3, 0.7, 40, 40, 7);
 		
 		int round = 1;
 		

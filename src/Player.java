@@ -142,8 +142,8 @@ public class Player {
 	 */
 	
 	public void takePowerPill() {
-		this.specialAbilityDuration = 2;
-		double multiplier = (Math.random());
+		this.specialAbilityDuration = 3;
+		double multiplier = (Math.random() * 0.9 + 0.1);
 		this.bonusAtk = (int) (this.ap * multiplier);
 	}
 	
@@ -163,7 +163,7 @@ public class Player {
 		this.specialAbilityDuration --;
 		if(this.specialAbilityDuration <= 0) {
 			this.specialAbilityDuration = 0;
-			if(this.bonusAtk < 0) {
+			if(this.bonusAtk > 0) {
 				this.bonusAtk = 0;
 				System.out.println("Die Wirkung der Powerpille laesst nach!");
 			}
