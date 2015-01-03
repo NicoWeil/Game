@@ -78,21 +78,34 @@ public class Game {
                     		break;
                     	} else {
                     		if(eingabe.equals("4")) {
-                    			System.out.println("Spieler setzt eine Powerpille ein!");
-                    			player.decreaseAp(20);
-                    			player.takePowerPill();
-                    			break;
-                    		} else {
-                    			if(eingabe.equals("5")) {
-                    				System.out.println("Spieler friert das Monster ein!");
-                    				player.decreaseAp(25);
-                    				opponent.freeze();
+                    			if(!player.isAbilityActive()) {
+                    				System.out.println("Spieler setzt eine Powerpille ein!");
+                    				player.decreaseAp(20);
+                    				player.takePowerPill();
                     				break;
                     			} else {
+                    				System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                    			}
+                    		} else {
+                    			if(eingabe.equals("5")) {
+                        			if(!opponent.isAbilityActive()) {
+                        				System.out.println("Spieler friert das Monster ein!");
+                        				player.decreaseAp(25);
+                        				opponent.freeze();
+                        				break;
+                        			} else {
+                        				System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                        			}
+                    			} else {
                     				if(eingabe.equals("6")) {
-                    					System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
-                    					opponent.hasDecreasedHitChance(0.4);
-                    					break;
+                    					if(!opponent.isAbilityActive()) {
+                    						System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
+                    						opponent.hasDecreasedHitChance(0.4);
+                    						break;
+                    					} else {
+                            				System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+
+                    					}
                     				}
                     			}
                     		}

@@ -121,7 +121,17 @@ public class Monster {
 		this.decreasedHitPoints = x;
 	}
 	
+	/**
+	 * Methode isAbilityActive() ueberprueft ob eine spezielle Faehigkeit noch aktiv ist.
+	 */
 	
+	public boolean isAbilityActive() {
+		if(this.specialAbilityDuration > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Methode getHP() gibt Lebenspunkte zurueck.

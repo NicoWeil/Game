@@ -165,7 +165,18 @@ public class Player {
 			this.specialAbilityDuration = 0;
 			this.bonusAtk = 0;
 		}
-		
+	}
+	
+	/**
+	 * Methode isAbilityActive() ueberprueft ob eine spezielle Faehigkeit noch aktiv ist.
+	 */
+	
+	public boolean isAbilityActive() {
+		if(this.specialAbilityDuration > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
