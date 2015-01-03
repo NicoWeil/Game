@@ -113,9 +113,11 @@ public class Monster {
 			this.specialAbilityDuration = 0;
 			if(this.frozen) {
 				this.frozen = false;
-				System.out.println("Das Monster taut wieder auf!");
+				if(this.hp > 0) {
+					System.out.println("Das Monster taut wieder auf!");
+				}
 			}
-			if(this.decreasedHitPoints != 0) {
+			if(this.decreasedHitPoints != 0 && this.hp > 0) {
 				this.decreasedHitPoints = 0;
 				System.out.println("Dem Monster ist nicht mehr schwindelig!");
 			}
