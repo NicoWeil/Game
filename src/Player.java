@@ -168,15 +168,15 @@ public class Player {
 	}
 	
 	/**
-	 * Methode isAbilityActive() ueberprueft ob eine spezielle Faehigkeit noch aktiv ist.
+	 * Methode isAbilityActive() ueberprueft, ob eine spezielle Faehigkeit noch aktiv ist.
 	 */
 	
 	public boolean isAbilityActive() {
-		if(this.specialAbilityDuration > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return (this.specialAbilityDuration > 0);
+	}
+	
+	public boolean enoughAp(int apNeeded) {
+		return (this.ap >= apNeeded);
 	}
 	
 	/**

@@ -28,7 +28,7 @@ public class Game {
 		 * Contsruktor: Player(maxHP, ATK, HealingPower, ItmeUses, HitChance, maxAP, startAP, APregenerate)
 		 */
 		
-		Player player = new Player(100, 15, 40, 3, 0.7, 40, 20, 5);
+		Player player = new Player(100, 15, 40, 3, 0.7, 40, 5, 5);
 		
 		int round = 1;
 		
@@ -78,36 +78,60 @@ public class Game {
                     		break;
                     	} else {
                     		if(eingabe.equals("4")) {
-                    			if(!player.isAbilityActive()) {
+                    			if(!player.enoughAp(25)) {
+                    				System.out.println("Nicht genug AP!");
+                    				System.out.println("Neue Eingabe?");
+                    				continue;
+                    			} else {
+                    				if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
                     				System.out.println("Spieler setzt eine Powerpille ein!");
-                    				player.decreaseAp(20);
+                    				player.decreaseAp(25);
                     				player.takePowerPill();
                     				break;
-                    			} else {
-                    				System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                    				} else {
+                    					System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                    					System.out.println("Neue Eingabe?");
+                    					continue;
+                    				}
                     			}
                     		} else {
                     			if(eingabe.equals("5")) {
-                        			if(!opponent.isAbilityActive()) {
-                        				System.out.println("Spieler friert das Monster ein!");
-                        				player.decreaseAp(25);
-                        				opponent.freeze();
-                        				break;
-                        			} else {
-                        				System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
-                        			}
-                    			} else {
-                    				if(eingabe.equals("6")) {
-                    					if(!opponent.isAbilityActive()) {
-                    						System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
-                    						opponent.hasDecreasedHitChance(0.4);
+                    				if(!player.enoughAp(35)) {
+                    					System.out.println("Nicht genug AP!");
+                        				System.out.println("Neue Eingabe?");
+                        				continue;
+                    				} else {
+                    					if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
+                    						System.out.println("Spieler friert das Monster ein!");
+                    						player.decreaseAp(35);
+                    						opponent.freeze();
                     						break;
                     					} else {
-                            				System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
-
+                    						System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                    						System.out.println("Neue Eingabe?");
+                    						continue;
                     					}
                     				}
-                    			}
+                        		} else {
+                        			if(eingabe.equals("6")) {
+                        				if(!player.enoughAp(20)) {
+                        					System.out.println("Nicht genug AP!");
+                            				System.out.println("Neue Eingabe?");
+                            				continue;
+                        				} else {
+                        					if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
+                        						System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
+                        						player.decreaseAp(20);
+                        						opponent.hasDecreasedHitChance(0.4);
+                        						break;
+                        					} else {
+                        						System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                        						System.out.println("Neue Eingabe?");
+                        						continue;
+                        					}
+                        				}
+                        			}
+                        		}
                     		}
                     	}
                     }
