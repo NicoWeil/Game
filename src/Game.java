@@ -39,7 +39,6 @@ public class Game {
 			System.out.println("---------------------------------");
             System.out.println("Runde " + round);
             round++;
-            System.out.println(opponent.getHitChance());
             System.out.println(player.toString());
             System.out.println(opponent.toString());
             System.out.println("Welche Aktion soll ausgeführt werden?");
@@ -47,8 +46,8 @@ public class Game {
             System.out.println("2 Item (" + player.getRemainingItemUses() + ")");
             System.out.println("3 Flucht");
             System.out.println("4 Powerpille (25 AP)");
-            System.out.println("5 Eisstrahl (30 AP)");
-            System.out.println("6 Nebel (20 AP)");
+            System.out.println("5 Eisstrahl (35 AP)");
+            System.out.println("6 Monster im Kreis drehen (20 AP)");
             
             while (true) { // Schleife immer laufend
                 String eingabe = sc.nextLine();
@@ -92,7 +91,7 @@ public class Game {
                     			} else {
                     				if(eingabe.equals("6")) {
                     					System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
-                    					opponent.hasDecreasedHitChance(0.2);
+                    					opponent.hasDecreasedHitChance(0.4);
                     					break;
                     				}
                     			}

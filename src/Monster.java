@@ -82,7 +82,7 @@ public class Monster {
 	 */
 	
 	public String toString() {
-		return "Monster -- HP " + this.hp + " -- ATK " + this.atk;
+		return "Monster -- HP " + this.hp + " -- ATK " + this.atk + " -- Decreased Hit Chance " + this.decreasedHitPoints;
 	}
 	
 	/**
@@ -104,6 +104,7 @@ public class Monster {
 	
 	/**
 	 * Methode roundFinishes() senkt die specialAbilityDuration (falls >0) um 1 und setzt this.frozen auf 0, sobald specialAbilityDuration=0.
+	 * Außerdem werden die decreasedHitPints auf 0 gesetzt falls diese > 0.
 	 */
 	
 	public void roundFinished() {
@@ -111,20 +112,15 @@ public class Monster {
 		if(this.specialAbilityDuration <= 0) {
 			this.specialAbilityDuration = 0;
 			this.frozen = false;
-			this.decreasedHitChance = false;
 			this.decreasedHitPoints = 0;
 		}
 	}
 	
-	public boolean hasDecreasedHitChance(double x) {
+	public void hasDecreasedHitChance(double x) {
 		this.specialAbilityDuration = 3;
-		this.decreasedHitPoints = 0.3;
-		return this.decreasedHitChance = true;
+		this.decreasedHitPoints = x;
 	}
 	
-	public double getHitChance() {
-		return this.hitChance;
-	}
 	
 	
 	/**
