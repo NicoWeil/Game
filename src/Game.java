@@ -85,6 +85,7 @@ public class Game {
                     			} else {
                     				if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
                     				System.out.println("Spieler setzt eine Powerpille ein!");
+                    				System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk() + " erhöht.");
                     				player.decreaseAp(25);
                     				player.takePowerPill();
                     				break;
@@ -121,6 +122,7 @@ public class Game {
                         				} else {
                         					if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
                         						System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
+                        						System.out.println("Die Genauigkeit des Monsters wurde um " + opponent.getDecreasedHitPoints() + " verringert.");
                         						player.decreaseAp(20);
                         						opponent.hasDecreasedHitChance(0.4);
                         						break;

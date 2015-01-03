@@ -111,8 +111,14 @@ public class Monster {
 		this.specialAbilityDuration --;
 		if(this.specialAbilityDuration <= 0) {
 			this.specialAbilityDuration = 0;
-			this.frozen = false;
-			this.decreasedHitPoints = 0;
+			if(this.frozen) {
+				this.frozen = false;
+				System.out.println("Das Monster taut wieder auf!");
+			}
+			if(this.decreasedHitPoints != 0) {
+				this.decreasedHitPoints = 0;
+				System.out.println("Dem Monster ist nicht mehr schwindelig!");
+			}
 		}
 	}
 	
@@ -131,6 +137,10 @@ public class Monster {
 		} else {
 			return false;
 		}
+	}
+	
+	public double getDecreasedHitPoints() {
+		return this.decreasedHitPoints;
 	}
 	
 	/**

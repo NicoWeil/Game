@@ -163,7 +163,10 @@ public class Player {
 		this.specialAbilityDuration --;
 		if(this.specialAbilityDuration <= 0) {
 			this.specialAbilityDuration = 0;
-			this.bonusAtk = 0;
+			if(this.bonusAtk < 0) {
+				this.bonusAtk = 0;
+				System.out.println("Die Wirkung der Powerpille laesst nach!");
+			}
 		}
 	}
 	
@@ -177,6 +180,10 @@ public class Player {
 	
 	public boolean enoughAp(int apNeeded) {
 		return (this.ap >= apNeeded);
+	}
+	
+	public int getBonusAtk() {
+		return this.bonusAtk;
 	}
 	
 	/**
