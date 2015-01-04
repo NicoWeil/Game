@@ -1,14 +1,20 @@
 import java.util.Scanner;
 
+/**
+ * Rundenbasiertes Kampsystem. Der Spieler kaempft gegen ein aus fuenf zur
+ * verfuegung stehenden Monstern (zufaellig gewaehlt) und hat mehrere Optionen
+ * im Angriff (Angriff, Heiltrank, [Flucht], spezielle Faehigkeiten). Am Ende
+ * wird ein Gewinner ausgegeben.
+ * 
+ * @author Nico Weil 4569075 Gruppe 11
+ */
+
 public class Game {
 
     /**
-     * Rundenbasiertes Kampsystem. Der Spieler kaempft gegen ein aus fuenf zur
-     * verfuegung stehenden Monstern (zufaellig gewaehlt) und hat mehrere
-     * Optionen im Angriff (Angriff, Heiltrank, [Flucht], spezielle
-     * Faehigkeiten). Am Ende wird ein Gewinner ausgegeben.
+     * s.o.
      * 
-     * @author Nico Weil 4569075 Gruppe 11
+     * @param
      */
 
     public static void main(String[] args) {
@@ -102,7 +108,8 @@ public class Game {
                                         System.out.println("Spieler setzt eine Powerpille ein!");
                                         player.decreaseAp(25);
                                         player.takePowerPill();
-                                        System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk() + " erhöht.");
+                                        System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk()
+                                                + " erhöht.");
                                         break;
                                     } else {
                                         System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
@@ -138,8 +145,10 @@ public class Game {
                                             if (!opponent.isAbilityActive() && !player.isAbilityActive()) {
                                                 player.decreaseAp(20);
                                                 opponent.hasDecreasedHitChance(0.4);
-                                                System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
-                                                System.out.println("Die Genauigkeit des Monsters wurde um " + opponent.getDecreasedHitPoints() + " verringert.");
+                                                System.out.println("Spieler dreht das Monster im Kreis! Dem Monster "
+                                                        + "ist schwindelig!");
+                                                System.out.println("Die Genauigkeit des Monsters wurde um "
+                                                        + opponent.getDecreasedHitPoints() + " verringert.");
                                                 break;
                                             } else {
                                                 System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");

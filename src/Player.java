@@ -1,3 +1,10 @@
+/**
+ * Methode zur Erzeugung eines Spielerobjekts in der main-Klasse.
+ * 
+ * @author Nico Weil 4569075 Gruppe 11
+ *
+ */
+
 public class Player {
 
     private int hp;
@@ -133,7 +140,8 @@ public class Player {
      */
 
     public String toString() {
-        return "Spieler -- HP " + this.hp + " -- ATK " + this.atk + " -- " + " BonusATK " + this.bonusAtk + " -- AP " + this.ap + " -- " + this.remainingItemUses + " Heiltraenke";
+        return "Spieler -- HP " + this.hp + " -- ATK " + this.atk + " -- " + " BonusATK " + this.bonusAtk + " -- AP "
+                + this.ap + " -- " + this.remainingItemUses + " Heiltraenke";
 
     }
 

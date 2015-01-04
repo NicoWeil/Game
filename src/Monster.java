@@ -1,3 +1,10 @@
+/**
+ * Methode zur Erzeugung eines Monsterobjekts in der main-Klasse.
+ * 
+ * @author Nico Weil 4569075 Gruppe 11
+ *
+ */
+
 public class Monster {
 
     private int hp;
@@ -76,7 +83,8 @@ public class Monster {
      */
 
     public String toString() {
-        return "Monster -- HP " + this.hp + " -- ATK " + this.atk + " -- Decreased Hit Chance " + this.decreasedHitPoints;
+        return "Monster -- HP " + this.hp + " -- ATK " + this.atk + " -- Decreased Hit Chance "
+                + this.decreasedHitPoints;
     }
 
     /**
