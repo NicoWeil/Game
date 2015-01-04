@@ -2,205 +2,202 @@ import java.util.Scanner;
 
 public class Game {
 
-	public static void main(String[] args) {
+    /**
+     * Rundenbasiertes Kampsystem. Der Spieler kaempft gegen ein aus fuenf zur
+     * verfuegung stehenden Monstern (zufaellig gewaehlt) und hat mehrere
+     * Optionen im Angriff (Angriff, Heiltrank, [Flucht], spezielle
+     * Faehigkeiten). Am Ende wird ein Gewinner ausgegeben.
+     * 
+     * @author Nico Weil 4569075 Gruppe 11
+     */
 
-		Monster[] monster = new Monster[5];
+    public static void main(String[] args) {
 
-		/*
-		 * Constructor: Monster(maxHP, ATK, HitChance)
-		 */
+        Monster[] monster = new Monster[5];
 
-		monster[0] = new Monster();
-		monster[1] = new Monster(100, 18, 0.8);
-		monster[2] = new Monster(150, 20, 0.5);
-		monster[3] = new Monster(210, 10, 0.9);
-		monster[4] = new Monster(125, 13, 0.7);
+        /*
+         * Constructor: Monster(maxHP, ATK, HitChance)
+         */
 
-		int monsterIndex = (int) (Math.random() * monster.length);
+        monster[0] = new Monster();
+        monster[1] = new Monster(100, 18, 0.8);
+        monster[2] = new Monster(150, 20, 0.5);
+        monster[3] = new Monster(210, 10, 0.9);
+        monster[4] = new Monster(125, 13, 0.7);
 
-		Monster opponent = monster[monsterIndex];
+        int monsterIndex = (int) (Math.random() * monster.length);
 
-		System.out.println("Ein wildes Monster " + monsterIndex + " erscheint!");
-		System.out.println(opponent.toString());
+        Monster opponent = monster[monsterIndex];
 
-		/*
-		 * Contsruktor: Player(maxHP, ATK, HealingPower, ItmeUses, HitChance,
-		 * maxAP, startAP, APregenerate)
-		 */
+        System.out.println("Ein wildes Monster " + monsterIndex + " erscheint!");
+        System.out.println(opponent.toString());
 
-		Player player = new Player(100, 15, 40, 3, 0.7, 60, 20, 10);
+        /*
+         * Contsruktor: Player(maxHP, ATK, HealingPower, ItmeUses, HitChance,
+         * maxAP, startAP, APregenerate)
+         */
 
-		int round = 1;
+        Player player = new Player(100, 15, 40, 3, 0.7, 60, 20, 10);
 
-		Scanner sc = new Scanner(System.in);
+        int round = 1;
 
-		while (!player.isDefeated() && !opponent.isDefeated()) {
+        Scanner sc = new Scanner(System.in);
 
-			System.out.println("---------------------------------");
-			System.out.println("Runde " + round);
-			round++;
-			System.out.println(player.toString());
-			System.out.println(opponent.toString());
-			System.out.println("Welche Aktion soll ausgeführt werden?");
-			System.out.println("1 Angriff");
-			System.out.println("2 Item (" + player.getRemainingItemUses() + ")");
-			System.out.println("3 Flucht");
-			System.out.println("4 Powerpille (25 AP)");
-			System.out.println("5 Eisstrahl (35 AP)");
-			System.out.println("6 Monster im Kreis drehen (20 AP)");
+        while (!player.isDefeated() && !opponent.isDefeated()) {
 
-			while (true) { // Schleife immer laufend
-				String eingabe = sc.nextLine();
-				if (eingabe.equals("1")) {
-					System.out.println("---------------------------------");
-					System.out.println("Spieler greift das Monster an!");
-					int monsterHp = player.attackMonster(opponent);
-					if (monsterHp == -1) {
-						System.out.println("Die Attacke ging daneben!");
-					} else {
-						System.out.println(player.toString());
-						System.out.println(opponent.toString());
-					}
-					break;
+            System.out.println("---------------------------------");
+            System.out.println("Runde " + round);
+            round++;
+            System.out.println(player.toString());
+            System.out.println(opponent.toString());
+            System.out.println("Welche Aktion soll ausgeführt werden?");
+            System.out.println("1 Angriff");
+            System.out.println("2 Item (" + player.getRemainingItemUses() + ")");
+            System.out.println("3 Flucht");
+            System.out.println("4 Powerpille (25 AP)");
+            System.out.println("5 Eisstrahl (35 AP)");
+            System.out.println("6 Monster im Kreis drehen (20 AP)");
 
-				} else {
-					if (eingabe.equals("2")) {
-						if (!player.fullHp()) {
-							if (player.heal()) {
-								System.out.println("Heilung erfolgreich!");
-								System.out.println(player.toString());
-							} else {
-								System.out.println("Keine Heiltraenke mehr uebrig!");
-							}
-							break;
-						} else {
-							System.out
-							        .println("Spieler hat volle HP. Der Heiltrank kann nicht eingesetzt werden.");
-							System.out.println("Neue Eingabe?");
-							continue;
-						}
-					} else {
-						if (eingabe.equals("3")) {
-							System.out.println("Feigling...");
-							break;
-						} else {
-							if (eingabe.equals("4")) {
-								if (!player.enoughAp(25)) {
-									System.out.println("Nicht genug AP!");
-									System.out.println("Neue Eingabe?");
-									continue;
-								} else {
-									if (!opponent.isAbilityActive() && !player.isAbilityActive()) {
-										System.out.println("Spieler setzt eine Powerpille ein!");
-										player.decreaseAp(25);
-										player.takePowerPill();
-										System.out.println("Die ATK des Spielers wurden um "
-										        + player.getBonusAtk() + " erhöht.");
-										break;
-									} else {
-										System.out
-										        .println("Spieler hat bereits eine Faehigkeit aktiviert.");
-										System.out.println("Neue Eingabe?");
-										continue;
-									}
-								}
-							} else {
-								if (eingabe.equals("5")) {
-									if (!player.enoughAp(35)) {
-										System.out.println("Nicht genug AP!");
-										System.out.println("Neue Eingabe?");
-										continue;
-									} else {
-										if (!opponent.isAbilityActive()
-										        && !player.isAbilityActive()) {
-											player.decreaseAp(35);
-											opponent.freeze();
-											System.out.println("Spieler friert das Monster ein!");
-											break;
-										} else {
-											System.out
-											        .println("Spieler hat bereits eine Faehigkeit aktiviert.");
-											System.out.println("Neue Eingabe?");
-											continue;
-										}
-									}
-								} else {
-									if (eingabe.equals("6")) {
-										if (!player.enoughAp(20)) {
-											System.out.println("Nicht genug AP!");
-											System.out.println("Neue Eingabe?");
-											continue;
-										} else {
-											if (!opponent.isAbilityActive()
-											        && !player.isAbilityActive()) {
-												player.decreaseAp(20);
-												opponent.hasDecreasedHitChance(0.4);
-												System.out
-												        .println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
-												System.out
-												        .println("Die Genauigkeit des Monsters wurde um "
-												                + opponent.getDecreasedHitPoints()
-												                + " verringert.");
-												break;
-											} else {
-												System.out
-												        .println("Spieler hat bereits eine Faehigkeit aktiviert.");
-												System.out.println("Neue Eingabe?");
-												continue;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					System.out.println("Keine gültige Eingabe!");
-					System.out.println("Neue Eingabe?");
-				}
+            while (true) { // Schleife immer laufend
+                String eingabe = sc.nextLine();
+                if (eingabe.equals("1")) {
+                    System.out.println("---------------------------------");
+                    System.out.println("Spieler greift das Monster an!");
+                    int monsterHp = player.attackMonster(opponent);
+                    if (monsterHp == -1) {
+                        System.out.println("Die Attacke ging daneben!");
+                    } else {
+                        System.out.println(player.toString());
+                        System.out.println(opponent.toString());
+                    }
+                    break;
 
-			}
+                } else {
+                    if (eingabe.equals("2")) {
+                        if (!player.fullHp()) {
+                            if (player.heal()) {
+                                System.out.println("Heilung erfolgreich!");
+                                System.out.println(player.toString());
+                            } else {
+                                System.out.println("Keine Heiltraenke mehr uebrig!");
+                            }
+                            break;
+                        } else {
+                            System.out.println("Spieler hat volle HP. Der Heiltrank kann nicht eingesetzt werden.");
+                            System.out.println("Neue Eingabe?");
+                            continue;
+                        }
+                    } else {
+                        if (eingabe.equals("3")) {
+                            System.out.println("Feigling...");
+                            break;
+                        } else {
+                            if (eingabe.equals("4")) {
+                                if (!player.enoughAp(25)) {
+                                    System.out.println("Nicht genug AP!");
+                                    System.out.println("Neue Eingabe?");
+                                    continue;
+                                } else {
+                                    if (!opponent.isAbilityActive() && !player.isAbilityActive()) {
+                                        System.out.println("Spieler setzt eine Powerpille ein!");
+                                        player.decreaseAp(25);
+                                        player.takePowerPill();
+                                        System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk() + " erhöht.");
+                                        break;
+                                    } else {
+                                        System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                                        System.out.println("Neue Eingabe?");
+                                        continue;
+                                    }
+                                }
+                            } else {
+                                if (eingabe.equals("5")) {
+                                    if (!player.enoughAp(35)) {
+                                        System.out.println("Nicht genug AP!");
+                                        System.out.println("Neue Eingabe?");
+                                        continue;
+                                    } else {
+                                        if (!opponent.isAbilityActive() && !player.isAbilityActive()) {
+                                            player.decreaseAp(35);
+                                            opponent.freeze();
+                                            System.out.println("Spieler friert das Monster ein!");
+                                            break;
+                                        } else {
+                                            System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                                            System.out.println("Neue Eingabe?");
+                                            continue;
+                                        }
+                                    }
+                                } else {
+                                    if (eingabe.equals("6")) {
+                                        if (!player.enoughAp(20)) {
+                                            System.out.println("Nicht genug AP!");
+                                            System.out.println("Neue Eingabe?");
+                                            continue;
+                                        } else {
+                                            if (!opponent.isAbilityActive() && !player.isAbilityActive()) {
+                                                player.decreaseAp(20);
+                                                opponent.hasDecreasedHitChance(0.4);
+                                                System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
+                                                System.out.println("Die Genauigkeit des Monsters wurde um " + opponent.getDecreasedHitPoints() + " verringert.");
+                                                break;
+                                            } else {
+                                                System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
+                                                System.out.println("Neue Eingabe?");
+                                                continue;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    System.out.println("Keine gültige Eingabe!");
+                    System.out.println("Neue Eingabe?");
+                }
 
-			if (!opponent.isDefeated()) {
-				System.out.println("Drücke Enter!");
-				sc.nextLine();
+            }
 
-				System.out.println("---------------------------------");
+            if (!opponent.isDefeated()) {
+                System.out.println("Drücke Enter!");
+                sc.nextLine();
 
-				if (opponent.isFrozen()) {
-					System.out
-					        .println("Das Monster ist gefroren und kann deshalb nicht angreifen.");
-					System.out.println(player.toString());
-					System.out.println(opponent.toString());
-				} else {
-					System.out.println("Das Monster greift Spieler an!");
-					int playerHp = opponent.attack(player);
-					if (playerHp == -1) {
-						System.out.println("Die Attacke ging daneben!");
-					} else {
-						System.out.println(player.toString());
-						System.out.println(opponent.toString());
-					}
-				}
-			}
+                System.out.println("---------------------------------");
 
-			System.out.println("---------------------------------");
+                if (opponent.isFrozen()) {
+                    System.out.println("Das Monster ist gefroren und kann deshalb nicht angreifen.");
+                    System.out.println(player.toString());
+                    System.out.println(opponent.toString());
+                } else {
+                    System.out.println("Das Monster greift Spieler an!");
+                    int playerHp = opponent.attack(player);
+                    if (playerHp == -1) {
+                        System.out.println("Die Attacke ging daneben!");
+                    } else {
+                        System.out.println(player.toString());
+                        System.out.println(opponent.toString());
+                    }
+                }
+            }
 
-			int refilledAp = player.regenerateAp();
-			System.out.println("Es wurden " + refilledAp + " AP regeneriert!");
+            System.out.println("---------------------------------");
 
-			opponent.roundFinished();
-			player.roundFinished();
+            int refilledAp = player.regenerateAp();
+            System.out.println("Es wurden " + refilledAp + " AP regeneriert!");
 
-		}
-		if (player.isDefeated()) {
-			System.out.println("Monster ist der Gewinner!");
-			System.out.println("Spieler verliert!");
+            opponent.roundFinished();
+            player.roundFinished();
 
-		} else {
-			System.out.println("Spieler ist der Gewinner!");
-			System.out.println("Monster verliert!");
+        }
+        if (player.isDefeated()) {
+            System.out.println("Monster ist der Gewinner!");
+            System.out.println("Spieler verliert!");
 
-		}
+        } else {
+            System.out.println("Spieler ist der Gewinner!");
+            System.out.println("Monster verliert!");
 
-	}
+        }
+
+    }
 }
