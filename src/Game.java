@@ -28,7 +28,7 @@ public class Game {
 		 * Contsruktor: Player(maxHP, ATK, HealingPower, ItmeUses, HitChance, maxAP, startAP, APregenerate)
 		 */
 		
-		Player player = new Player(100, 15, 40, 3, 0.7, 60, 20, 7);
+		Player player = new Player(100, 15, 40, 3, 0.7, 60, 20, 10);
 		
 		int round = 1;
 		
@@ -85,9 +85,9 @@ public class Game {
                     			} else {
                     				if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
                     				System.out.println("Spieler setzt eine Powerpille ein!");
-                    				System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk() + " erhöht.");
                     				player.decreaseAp(25);
                     				player.takePowerPill();
+                    				System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk() + " erhöht.");
                     				break;
                     				} else {
                     					System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
@@ -103,9 +103,9 @@ public class Game {
                         				continue;
                     				} else {
                     					if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
-                    						System.out.println("Spieler friert das Monster ein!");
                     						player.decreaseAp(35);
                     						opponent.freeze();
+                    						System.out.println("Spieler friert das Monster ein!");
                     						break;
                     					} else {
                     						System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
@@ -121,10 +121,10 @@ public class Game {
                             				continue;
                         				} else {
                         					if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
-                        						System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
-                        						System.out.println("Die Genauigkeit des Monsters wurde um " + opponent.getDecreasedHitPoints() + " verringert.");
                         						player.decreaseAp(20);
                         						opponent.hasDecreasedHitChance(0.4);
+                        						System.out.println("Spieler dreht das Monster im Kreis! Dem Monster ist schwindelig!");
+                        						System.out.println("Die Genauigkeit des Monsters wurde um " + opponent.getDecreasedHitPoints() + " verringert.");
                         						break;
                         					} else {
                         						System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
