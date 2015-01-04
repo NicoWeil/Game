@@ -65,13 +65,19 @@ public class Game {
                     
                 } else {
                     if(eingabe.equals("2")) {
-                    	if(player.heal()) {
-                    		System.out.println("Heilung erfolgreich!");
-                    		System.out.println(player.toString());
+                    	if(!player.fullHp()) {
+                    		if(player.heal()) {
+                        		System.out.println("Heilung erfolgreich!");
+                        		System.out.println(player.toString());
+                        	} else {
+                        		System.out.println("Keine Heiltraenke mehr uebrig!");
+                        	}
+                        	break;
                     	} else {
-                    		System.out.println("Keine Heiltraenke mehr uebrig!");
+                    		System.out.println("Spieler hat volle HP. Der Heiltrank kann nicht eingesetzt werden.");
+                    		System.out.println("Neue Eingabe?");
+                    		continue;
                     	}
-                    	break;
                     } else {
                     	if(eingabe.equals("3")) {
                     		System.out.println("Feigling...");
@@ -84,11 +90,11 @@ public class Game {
                     				continue;
                     			} else {
                     				if(!opponent.isAbilityActive() && !player.isAbilityActive()) {
-                    				System.out.println("Spieler setzt eine Powerpille ein!");
-                    				player.decreaseAp(25);
-                    				player.takePowerPill();
-                    				System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk() + " erhöht.");
-                    				break;
+                    					System.out.println("Spieler setzt eine Powerpille ein!");
+                    					player.decreaseAp(25);
+                    					player.takePowerPill();
+                    					System.out.println("Die ATK des Spielers wurden um " + player.getBonusAtk() + " erhöht.");
+                    					break;
                     				} else {
                     					System.out.println("Spieler hat bereits eine Faehigkeit aktiviert.");
                     					System.out.println("Neue Eingabe?");

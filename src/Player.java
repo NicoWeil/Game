@@ -115,6 +115,10 @@ public class Player {
 		}
 	}
 	
+	public boolean fullHp() {
+		return (this.hp == this.maxHP);
+	}
+	
 	/**
 	 * Methode toString() gibt HP, ATK, AP, Items zurueck.
 	 */
