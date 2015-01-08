@@ -1,5 +1,5 @@
 
-public class Player {
+public class Player extends Character{
 	
 	private int hp;
 	private int maxHP;

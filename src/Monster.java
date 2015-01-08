@@ -1,5 +1,5 @@
 
-public class Monster {
+public class Monster extends Character{
 	
 	private int hp;
 	private int maxHP;
