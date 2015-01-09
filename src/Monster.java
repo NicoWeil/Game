@@ -1,12 +1,7 @@
 
 public class Monster extends Character{
 	
-	private int hp;
-	private int maxHP;
-	private int atk;
-	private double hitChance;
 	private boolean frozen;
-	private int specialAbilityDuration;
 	private boolean decreasedHitChance;
 	private double decreasedHitPoints;
 
@@ -36,30 +31,6 @@ public class Monster extends Character{
 		this.decreasedHitPoints = 0.0;
 
 	
-	}
-	
-	/**
-	 * Methode isDefeated ueberprueft, ob Monster besiegt ist
-	 */
-	
-	public boolean isDefeated() {
-		if(this.hp <= 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Methode takeDamage fügt dem Monster den durch damage übergebenen Schaden zu.
-	 */
-	
-	public void takeDamage(int damage) {
-		this.hp -= damage;
-		if(this.hp <= 0) {
-			this.hp = 0;
-		}
 	}
 	
 	/**
@@ -129,29 +100,6 @@ public class Monster extends Character{
 		this.decreasedHitPoints = x;
 	}
 	
-	/**
-	 * Methode isAbilityActive() ueberprueft ob eine spezielle Faehigkeit noch aktiv ist.
-	 */
-	
-	public boolean isAbilityActive() {
-		if(this.specialAbilityDuration > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
 	public double getDecreasedHitPoints() {
 		return this.decreasedHitPoints;
 	}
-	
-	/**
-	 * Methode getHP() gibt Lebenspunkte zurueck.
-	 */
-	
-	public int getHp() {
-		return this.hp;
-		
-	}
-
-}

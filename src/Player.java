@@ -49,31 +49,6 @@ public class Player extends Character{
 		this.hitChance = 0.7;
 	}
 	
-	
-	/**
-	 * Methode isDefeated() kontrolloiert, ob Spieler besiegt ist.
-	 */
-	
-	public boolean isDefeated() {
-		if(this.hp <= 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Methode takeDamage(int damage) fügt dem Spieler den ducrh damage angegebenen Schaden zu.
-	 */
-	
-	public void takeDamage(int damage) {
-		this.hp -= damage;
-		if(this.hp <= 0) {
-			this.hp = 0;
-		}
-	}
-	
 	/**
 	 * Methode attackMonster(Monster monster) fuegt dem uebergebenen Monsterobjekt Schaden zu.
 	 * Methode hat zwei Angriffsarten: Wenn Option "Powerpille" gewaehlt wird, wird der Angriff mit durch takePowerPill() generierte BonusATK zusaetzlich zu den ATK durchgefuehrt. Wenn nicht, wird der Angriff mit den normalen ATK durchgefuehrt. 
@@ -170,28 +145,12 @@ public class Player extends Character{
 		}
 	}
 	
-	/**
-	 * Methode isAbilityActive() ueberprueft, ob eine spezielle Faehigkeit noch aktiv ist.
-	 */
-	
-	public boolean isAbilityActive() {
-		return (this.specialAbilityDuration > 0);
-	}
-	
 	public boolean enoughAp(int apNeeded) {
 		return (this.ap >= apNeeded);
 	}
 	
 	public int getBonusAtk() {
 		return this.bonusAtk;
-	}
-	
-	/**
-	 * Methode getHP() gibt HP zurueck.
-	 */
-	
-	public int getHp() {
-		return this.hp;
 	}
 	
 	
