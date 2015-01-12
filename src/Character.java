@@ -1,11 +1,11 @@
 
 public class Character {
     
-    private int hp;
-    private int maxHP;
-    private int atk;
-    private double hitChance;
-    private int specialAbilityDuration;
+    protected int hp;
+    protected int maxHP;
+    protected int atk;
+    protected double hitChance;
+    protected int specialAbilityDuration;
 
     
     /**
@@ -22,7 +22,7 @@ public class Character {
     }
     
     /**
-     * Methode takeDamage fügt dem Monster den durch damage übergebenen Schaden zu.
+     * Methode takeDamage fuegt dem Charakter den durch damage uebergebenen Schaden zu.
      */
     
     public void takeDamage(int damage) {

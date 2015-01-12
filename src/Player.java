@@ -1,17 +1,12 @@
 
 public class Player extends Character{
 	
-	private int hp;
-	private int maxHP;
-	private int atk;
 	private int healingPower;
 	private int remainingItemUses;
-	private double hitChance;
 	private int ap;
 	private int maxAp;
 	private int apRegen;
 	private int bonusAtk;
-	private int specialAbilityDuration;
 	
 	public Player( int maxH, int a, int x, int r, double y) {
 		
@@ -152,7 +147,4 @@ public class Player extends Character{
 	public int getBonusAtk() {
 		return this.bonusAtk;
 	}
-	
-	
-
 }
