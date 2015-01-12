@@ -5,21 +5,28 @@ public class Game {
 	
 	public static void main(String[] args) {
 		
-		Monster[] monster = new Monster[5];
+		Monster[] [] monster = new Monster[2] [5];
 		
 		/*
 		 * Constructor: Monster(maxHP, ATK, HitChance)
 		 */
 		
-		monster[0] = new Monster();
-		monster[1] = new Monster(100, 18, 0.8);
-		monster[2] = new Monster(150, 20, 0.5);
-		monster[3] = new Monster(210, 10, 0.9);
-		monster[4] = new Monster(125, 13, 0.7);
+		monster[0] [0] = new Monster();
+		monster[0] [1] = new Monster(100, 18, 0.8);
+		monster[0] [2] = new Monster(150, 20, 0.5);
+		monster[0] [3] = new Monster(210, 10, 0.9);
+		monster[0] [4] = new Monster(125, 13, 0.7);
+		monster[1] [0] = new Monster();
+		monster[1] [1] = new Monster(100, 18, 0.8);
+		monster[1] [2] = new Monster(150, 20, 0.5);
+		monster[1] [3] = new Monster(210, 10, 0.9);
+		monster[1] [4] = new Monster(125, 13, 0.7);
+		
+		int arrayIndex = (int) (Math.random() * monster.length);
 		
 		int monsterIndex = (int) (Math.random() * monster.length);
 		
-		Monster opponent = monster[monsterIndex];
+		Monster opponent = monster[arrayIndex] [monsterIndex];
 		
 		System.out.println("Ein wildes Monster " + monsterIndex + " erscheint!");
 		System.out.println(opponent.toString());
