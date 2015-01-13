@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 
 public class Game {
-	
+    
+    
 	public static void main(String[] args) {
 		
 		Monster[] [] monster = new Monster[2] [5];
@@ -43,15 +44,17 @@ public class Game {
 		
 		Player player = new Player(100, 15, 40, 3, 0.7, 60, 20, 10);
 		
-		int round = 1;
+		Round round = new Round(1);
+		
+		
 		
 		Scanner sc = new Scanner(System.in);
 		
 		while(!player.isDefeated() && !opponent.isDefeated()) {
 			
 			System.out.println("---------------------------------");
-            System.out.println("Runde " + round);
-            round++;
+            System.out.println("Runde " + round.getRound());
+            round.addRound();
             System.out.println(player.toString());
             System.out.println(opponent.toString());
             System.out.println("Welche Aktion soll ausgeführt werden?");
