@@ -5,18 +5,16 @@
 
 public class Round {
     
-    protected int round;
+    private static int round = 0;
     
-    public Round(int t) {
-        this.round = t;
-    }
+    
     
     /**
      * Methode addRound() addiert 1 auf die Rundenzahl.
      */
     
-    public void addRound() {
-        this.round = this.round + 1;
+    public static void addRound() {
+        round++;
     }
     
     /**
@@ -24,8 +22,8 @@ public class Round {
      * @return int this.round
      */
     
-    public int getRound() {
-        return this.round;
+    public static int getRound() {
+        return round;
     }
     
     /**
@@ -33,9 +31,9 @@ public class Round {
      * @return boolean
      */
     
-    public static boolean isEven(int x) {
-        int remainder = x % 2;
-        if(remainder < 0) {
+    public static boolean isEven() {
+        int remainder = round % 2;
+        if(remainder > 0) {
             return false;
         } else {
             return true;
