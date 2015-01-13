@@ -8,6 +8,32 @@
 
 public class MonsterA extends Monster {
 
+    public MonsterA(int maxH, int a, double y) {
+
+        this.hp = maxH;
+        this.maxHP = maxH;
+        this.atk = a;
+        this.hitChance = y;
+        this.frozen = false;
+        this.specialAbilityDuration = 0;
+        this.decreasedHitChance = false;
+        this.decreasedHitPoints = 0.0;
+
+    }
+
+    public MonsterA() {
+
+        this.hp = 200;
+        this.maxHP = 200;
+        this.atk = 10;
+        this.hitChance = 0.9;
+        this.frozen = false;
+        this.specialAbilityDuration = 0;
+        this.decreasedHitChance = false;
+        this.decreasedHitPoints = 0.0;
+
+    }
+
     /**
      * Methode takeDamage fuegt dem Charakter die Hälfte des durch damage
      * uebergebenen Schaden zu. Sie ueberschreibt takeDamage der Basisklasse.
@@ -23,7 +49,7 @@ public class MonsterA extends Monster {
 
     /**
      * Methode attack(Player player) fuegt dem uebergebenen Objekt Schaden zu,
-     * allerdings nur mit 0.5*ATK.
+     * allerdings nur mit 0.5*ATK des Spielers.
      */
 
     public int attack(Player player) {
@@ -35,5 +61,14 @@ public class MonsterA extends Monster {
             player.takeDamage((int) ((this.atk * 0.5) * zufallsZahl));
             return player.getHp();
         }
+    }
+
+    /**
+     * Methode isSpecial() gibt booleanschen Wert zurueck ob Monster normal oder
+     * speziell.
+     */
+
+    public boolean isSpecial() {
+        return true;
     }
 }

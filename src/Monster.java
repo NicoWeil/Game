@@ -1,7 +1,7 @@
 public class Monster extends Character {
 
-    private boolean frozen;
-    private boolean decreasedHitChance;
+    protected boolean frozen;
+    protected boolean decreasedHitChance;
     protected double decreasedHitPoints;
 
     public Monster(int maxH, int a, double y) {
@@ -104,5 +104,14 @@ public class Monster extends Character {
 
     public double getDecreasedHitPoints() {
         return this.decreasedHitPoints;
+    }
+    
+    /**
+     * Methode isSpecial() gibt booleanschen Wert zurueck ob Monster normal oder
+     * speziell.
+     */
+
+    public boolean isSpecial() {
+        return false;
     }
 }
