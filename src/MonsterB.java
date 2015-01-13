@@ -38,7 +38,6 @@ public class MonsterB extends Monster {
      */
 
     public int attack(Player player) {
-        if(round.isEven(round)) {
             
         }
         double zufallsZahlVergleich = Math.random();

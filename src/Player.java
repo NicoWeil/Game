@@ -1,3 +1,9 @@
+/**
+ * Methode zur Erzeugung eines Spielerobjekts in der main-Klasse.
+ * 
+ * @author Nico Weil 4569075 Gruppe 11
+ *
+ */
 
 public class Player extends Character{
 	
