@@ -1,13 +1,11 @@
 /**
- * Klasse, welche die Runden des Kampfsystemes verwaltet.
+ * (static!-)Klasse, welche die Runden des Kampfsystemes verwaltet.
  * @author Nico Weil 4569075 Gruppe 11
  */
 
 public class Round {
     
     private static int round = 0;
-    
-    
     
     /**
      * Methode addRound() addiert 1 auf die Rundenzahl.
@@ -28,7 +26,7 @@ public class Round {
     
     /**
      * Methode isEven() gibt booleanschen Wert zurueck, ob die Rundenzahl gerade oder ungerade ist.
-     * @return boolean
+     * @return boolean: true wenn gerade, false wenn ungerade.
      */
     
     public static boolean isEven() {

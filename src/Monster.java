@@ -1,3 +1,14 @@
+/**
+ * Klasse, welche von Character abgeleitet ist, also alles, was in Character
+ * steht erbt (d.h. alles was in Character steht braucht Monster nicht mehr).
+ * Schluesselwort fuer die Vererbung ist 'extends' hinter dem Klassennamen,
+ * darauf folgt der Name der Klasse, von welcher abgeleitet wird (in diesem
+ * Falle also Character).
+ * 
+ * @author Nico
+ *
+ */
+
 public class Monster extends Character {
 
     protected boolean frozen;
@@ -105,7 +116,7 @@ public class Monster extends Character {
     public double getDecreasedHitPoints() {
         return this.decreasedHitPoints;
     }
-    
+
     /**
      * Methode isSpecial() gibt booleanschen Wert zurueck ob Monster normal oder
      * speziell.

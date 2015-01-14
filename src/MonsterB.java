@@ -38,17 +38,19 @@ public class MonsterB extends Monster {
      */
 
     public int attack(Player player) {
-            
-        }
-        double zufallsZahlVergleich = Math.random();
-        if (zufallsZahlVergleich > (this.hitChance - this.decreasedHitPoints)) {
-            return -1;
+        if(Round.isEven()) {
+            double zufallsZahlVergleich = Math.random();
+            if (zufallsZahlVergleich > (this.hitChance - this.decreasedHitPoints)) {
+                return -1;
+            } else {
+                double zufallsZahl = Math.random() + 2;
+                player.takeDamage((int) (this.atk * zufallsZahl));
+                return player.getHp();
+            }
+        
         } else {
-            double zufallsZahl = Math.random() + 1;
-            player.takeDamage((int) (this.atk * zufallsZahl));
-            return player.getHp();
+            System.out.println("Das Monster laedt sich auf!");
+            return 1;
         }
     }
-
-
 }
