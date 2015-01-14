@@ -49,7 +49,6 @@ public class MonsterB extends Monster {
             }
         
         } else {
-            System.out.println("Das Monster laedt sich auf!");
             return 1;
         }
     }

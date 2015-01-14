@@ -15,7 +15,7 @@ public class Game {
     
 	public static void main(String[] args) {
 		
-		Monster[] [] monster = new Monster[2] [5];
+		Monster[] [] monster = new Monster[3] [5];
 		
 		/*
 		 * Constructor: Monster(maxHP, ATK, HitChance)
@@ -31,7 +31,12 @@ public class Game {
 		monster[1] [2] = new MonsterA(150, 20, 0.5);
 		monster[1] [3] = new MonsterA(210, 10, 0.9);
 		monster[1] [4] = new MonsterA(125, 13, 0.7);
-		
+		monster[2] [0] = new MonsterB();
+		monster[2] [1] = new MonsterB(100, 18, 0.8);
+	    monster[2] [2] = new MonsterB(150, 20, 0.5);
+	    monster[2] [3] = new MonsterB(210, 10, 0.9);
+	    monster[2] [4] = new MonsterB(125, 13, 0.7);
+		        
 		int arrayIndex = (int) (Math.random() * monster.length);
 		
 		int monsterIndex = (int) (Math.random() * monster[arrayIndex].length);
@@ -52,17 +57,13 @@ public class Game {
 		
 		Player player = new Player(100, 15, 40, 3, 0.7, 60, 20, 10);
 		
-		Round round = new Round(1);
-		
-		
-		
 		Scanner sc = new Scanner(System.in);
 		
 		while(!player.isDefeated() && !opponent.isDefeated()) {
 			
 			System.out.println("---------------------------------");
-            System.out.println("Runde " + round.getRound());
-            round.addRound();
+            System.out.println("Runde " + Round.getRound());
+            Round.addRound();
             System.out.println(player.toString());
             System.out.println(opponent.toString());
             System.out.println("Welche Aktion soll ausgeführt werden?");
@@ -180,11 +181,17 @@ public class Game {
                 } else {
                 System.out.println("Das Monster greift Spieler an!");
                 	int playerHp = opponent.attack(player);
-                	if(playerHp == -1) {
-                		System.out.println("Die Attacke ging daneben!");
-                	} else {
-                		System.out.println(player.toString());
-                		System.out.println(opponent.toString());
+                	switch(playerHp) {
+                	case(-1) :
+                	    System.out.println("Die Attacke ging daneben!");
+                	    break;
+                	case(1) :
+                        System.out.println("Das Monster laedt sich auf!");
+                	    break;
+                	default :
+                	    System.out.println(player.toString());
+                	    System.out.println(opponent.toString());
+                	    break;
                 	}
                 }
             }
