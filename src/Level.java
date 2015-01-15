@@ -5,9 +5,13 @@
 
 public class Level {
     
-    public Level(char[] [] mapData) {
+    char[] [] mapData = new char[5] [5];
+    
+    public char[][] toString() {
+        return mapData;
         
     }
+        
         
     
  
