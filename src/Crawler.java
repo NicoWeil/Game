@@ -7,17 +7,7 @@ public class Crawler {
     
     public static void main(String[] args) {
         
-        char[] [] mapData = {
-                {'x','x','x','x','x'},
-                {'x','B','.','x','x'},
-                {'.','O','.','x','x'},
-                {'T','.','x','O','S'},
-                {'x','Z','x','x','x'},
-                
-        };
-        
-        Level playingField = new Level(mapData);
-        System.out.println(playingField);
+        Level playingField = new Level([5] , [5]);
         
     }
 
