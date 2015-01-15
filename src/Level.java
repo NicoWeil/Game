@@ -7,9 +7,12 @@ public class Level {
     
     char[] [] mapData = new char[5] [5];
     
-    public char[][] toString() {
-        return mapData;
-        
+    mapData[0] [0] = 'x';
+    mapData[0] [1] =
+    mapData[0] [2] =    
+    mapData[0] [2]
+    mapData[0] [2]
+            
     }
         
         
