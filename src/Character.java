@@ -2,10 +2,15 @@
  * Basisklasse, von der u.a. Monster, MonsterA/B, Player abgeleitet werden (d.h.
  * sie besitzt alle Instanzen, die sowohl Player als auch Monster benoetigen).
  * 
- * @author Nico
+ * @author Nico Weil 4596075 Gruppe 11
  *
  */
 public class Character {
+    
+    /**
+     * Javadoc.
+     * Comment: Warum MUESSEN Variablen private sein?!
+     */
 
     protected int hp;
     protected int maxHP;
@@ -58,5 +63,4 @@ public class Character {
         return this.hp;
 
     }
-
 }

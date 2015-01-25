@@ -1,11 +1,7 @@
 /**
- * Klasse, welche von Character abgeleitet ist, also alles, was in Character
- * steht erbt (d.h. alles was in Character steht braucht Monster nicht mehr).
- * Schluesselwort fuer die Vererbung ist 'extends' hinter dem Klassennamen,
- * darauf folgt der Name der Klasse, von welcher abgeleitet wird (in diesem
- * Falle also Character).
+ * Klasse zur Erzeugung eines Monsterobjekts.
  * 
- * @author Nico
+ * @author Nico Weil 4569075 Gruppe 11
  *
  */
 
@@ -14,6 +10,14 @@ public class Monster extends Character {
     protected boolean frozen;
     protected boolean decreasedHitChance;
     protected double decreasedHitPoints;
+
+    /**
+     * Contsructor.
+     * 
+     * @param maxH
+     * @param a
+     * @param y
+     */
 
     public Monster(int maxH, int a, double y) {
 
@@ -27,6 +31,10 @@ public class Monster extends Character {
         this.decreasedHitPoints = 0.0;
 
     }
+
+    /**
+     * Constructor.
+     */
 
     public Monster() {
 
@@ -108,10 +116,24 @@ public class Monster extends Character {
         }
     }
 
+    /**
+     * hasDecreasedHitChance(double x) verringert HitChance um den in Klammern
+     * uebergebenen Wert.
+     * 
+     * @param double x
+     */
+
     public void hasDecreasedHitChance(double x) {
         this.specialAbilityDuration = 3;
         this.decreasedHitPoints = x;
     }
+
+    /**
+     * getDecreasedHitPoints ueberprueft, ob das Monster verringerte HitChance
+     * hat.
+     * 
+     * @return true/false
+     */
 
     public double getDecreasedHitPoints() {
         return this.decreasedHitPoints;
@@ -119,7 +141,7 @@ public class Monster extends Character {
 
     /**
      * Methode isSpecial() gibt booleanschen Wert zurueck ob Monster normal oder
-     * speziell.
+     * speziell ist.
      */
 
     public boolean isSpecial() {

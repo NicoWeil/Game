@@ -1,12 +1,21 @@
 /**
  * Klasse, welche von Monster abgeleitet wird; zur Erzeugung eines
- * Monsterobjekts, welches weniger Schaden nimmt ("Gummimonster").
+ * Monsterobjekts, welches weniger Schaden nimmt ("Gummimonster"), allerdings
+ * auch nur mit halber ATK angreift.
  * 
- * @author Nico
+ * @author Nico Weil 4569075 Gruppe 11
  *
  */
 
 public class MonsterA extends Monster {
+
+    /**
+     * Constructor.
+     * 
+     * @param maxH
+     * @param a
+     * @param y
+     */
 
     public MonsterA(int maxH, int a, double y) {
 
@@ -20,6 +29,10 @@ public class MonsterA extends Monster {
         this.decreasedHitPoints = 0.0;
 
     }
+
+    /**
+     * Constructor.
+     */
 
     public MonsterA() {
 
