@@ -5,7 +5,7 @@ public class Test {
         
         RecursiveBacktracker generator = new RecursiveBacktracker();
         
-        char[][] map = generator.generate(5, 5);
+        char[][] map = generator.generate(11, 11);
         
         
             for (int i = 0; i < map.length; i++) {

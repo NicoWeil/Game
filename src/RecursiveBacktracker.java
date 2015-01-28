@@ -99,12 +99,12 @@ public class RecursiveBacktracker implements MazeGenerator {
             throw new IllegalArgumentException("Generate darf nicht mit geraden Zahlen aufgerufen werden.");
         }
         this.map = new char[height][width];
-        for (int y = 0; y < map.length; y++) {
-            for (int x = 0; x < map[y].length; x++) {
+        for (int y = 0; y < this.map.length; y++) {
+            for (int x = 0; x < this.map[y].length; x++) {
                 if (y % 2 == 0 || x % 2 == 0) {
-                    map[y][x] = WALL;
+                    this.map[y][x] = WALL;
                 } else {
-                    map[y][x] = SPACE;
+                    this.map[y][x] = SPACE;
                   }
             }
         }
@@ -113,7 +113,7 @@ public class RecursiveBacktracker implements MazeGenerator {
         this.startY = (int) (Math.random() * (height / 2)) * 2 + 1;
         generatePath(startY, startX);
         map[startY][startX] = START;
-        map = FreeFields.createList(map, height, width);
-        return map;
+        this.map = FreeFields.placeSpecialFields(map, height, width, 5, 7, 10);
+        return this.map;
     }
 }
